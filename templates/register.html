@@ -1,77 +1,241 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-    <title>Register</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | My Bank</title>
     <style>
-
-        body{
-            font-family:Arial;
-            background:#f4f7fb;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
+        :root {
+            --ink: #172033;
+            --muted: #64748b;
+            --line: #dbe4ef;
+            --brand: #0f766e;
+            --brand-dark: #115e59;
+            --soft: #f6f8fb;
+            --gold: #f4b740;
         }
 
-        .box{
-            background:white;
-            padding:40px;
-            border-radius:15px;
-            width:350px;
-            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        input{
-            width:100%;
-            padding:14px;
-            margin-top:10px;
-            margin-bottom:20px;
-            border-radius:10px;
-            border:1px solid #ccc;
+        body {
+            min-height: 100vh;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(120deg, rgba(246,248,251,0.96), rgba(246,248,251,0.84)),
+                url("https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1800&q=80") center/cover;
+            display: grid;
+            place-items: center;
+            padding: 24px;
         }
 
-        button{
-            width:100%;
-            padding:14px;
-            border:none;
-            border-radius:10px;
-            background:#1e3a8a;
-            color:white;
-            font-size:16px;
+        .auth {
+            width: min(960px, 100%);
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            background: rgba(255,255,255,0.92);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: 0 26px 70px rgba(23,32,51,0.14);
+            overflow: hidden;
         }
 
+        .panel {
+            padding: 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: var(--brand);
+            color: white;
+            display: grid;
+            place-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hint {
+            color: var(--muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            min-height: 50px;
+            padding: 13px 14px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            font: inherit;
+            outline: none;
+            background: var(--soft);
+        }
+
+        input:focus {
+            border-color: var(--brand);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(15,118,110,0.12);
+        }
+
+        button {
+            width: 100%;
+            min-height: 52px;
+            border: none;
+            border-radius: 8px;
+            background: var(--brand);
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--brand-dark);
+        }
+
+        .side {
+            background: #172033;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature {
+            border-bottom: 1px solid rgba(255,255,255,0.16);
+            padding: 22px 0;
+        }
+
+        .feature:first-child {
+            padding-top: 0;
+        }
+
+        .feature:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .feature span {
+            display: inline-grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--gold);
+            color: #172033;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .switch {
+            margin-top: 22px;
+            color: var(--muted);
+        }
+
+        .switch a,
+        .home-link {
+            color: var(--brand-dark);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 22px;
+        }
+
+        @media (max-width: 760px) {
+            .auth {
+                grid-template-columns: 1fr;
+            }
+
+            .panel,
+            .side {
+                padding: 32px 24px;
+            }
+        }
     </style>
-
 </head>
-
 <body>
+    <main class="auth">
+        <section class="panel">
+            <div class="brand">
+                <span class="brand-mark">B</span>
+                <span>My Bank</span>
+            </div>
 
-<div class="box">
+            <h1>Create Account</h1>
+            <p class="hint">Register once and your savings and business accounts are created automatically.</p>
 
-    <h2>Create Account</h2>
+            <form method="POST">
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" placeholder="Choose username" required>
 
-    <form method="POST">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" placeholder="Create password" required>
 
-        <input type="text"
-               name="username"
-               placeholder="Username"
-               required>
+                <button type="submit">Register</button>
+            </form>
 
-        <input type="password"
-               name="password"
-               placeholder="Password"
-               required>
+            <p class="switch">Already have an account? <a href="/login">Login</a></p>
+            <a class="home-link" href="/">Back to home</a>
+        </section>
 
-        <button type="submit">
-            Register
-        </button>
-
-    </form>
-
-</div>
-
+        <aside class="side">
+            <div class="feature">
+                <span>1</span>
+                <h3>Instant setup</h3>
+                <p>New users receive a savings account and a business account for testing the banking flow.</p>
+            </div>
+            <div class="feature">
+                <span>2</span>
+                <h3>Quick transfers</h3>
+                <p>Move money between registered account numbers and keep every transfer in history.</p>
+            </div>
+            <div class="feature">
+                <span>3</span>
+                <h3>Clear dashboard</h3>
+                <p>Balances, account numbers, and transaction details are easy to scan on any device.</p>
+            </div>
+        </aside>
+    </main>
 </body>
 </html>
