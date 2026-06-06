@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bank Dashboard</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial;
+            background:#f4f7fb;
+        }
+
+        .navbar{
+            background:#1e3a8a;
+            color:white;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .container{
+            width:90%;
+            margin:auto;
+            margin-top:30px;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:20px;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3{
+            margin:0;
+            color:#1e3a8a;
+        }
+
+        .balance{
+            font-size:28px;
+            margin-top:15px;
+            font-weight:bold;
+        }
+
+        .account{
+            margin-top:10px;
+            color:gray;
+        }
+
+        .transfer-box{
+            background:white;
+            margin-top:40px;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        input{
+            width:100%;
+            padding:14px;
+            margin-top:10px;
+            margin-bottom:20px;
+            border-radius:10px;
+            border:1px solid #ccc;
+            font-size:16px;
+        }
+
+        button{
+            background:#1e3a8a;
+            color:white;
+            border:none;
+            padding:14px 20px;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#172554;
+        }
+
+        .links{
+            margin-top:25px;
+        }
+
+        .links a{
+            text-decoration:none;
+            margin-right:20px;
+            color:#1e3a8a;
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <h2>My Bank</h2>
+
+        <h3>Welcome {{ username }}</h3>
+
+    </div>
+
+    <div class="container">
+
+        <h2>Your Accounts</h2>
+
+        <div class="cards">
+
+            {% for acc in accounts %}
+
+            <div class="card">
+
+                <h3>{{ acc[2] }}</h3>
+
+                <div class="account">
+                    Account Number: {{ acc[3] }}
+                </div>
+
+                <div class="balance">
+                    ₹{{ acc[4] }}
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="transfer-box">
+
+            <h2>Transfer Money</h2>
+
+            <form method="POST" action="/transfer">
+
+                <input type="text"
+                       name="sender"
+                       placeholder="Sender Account Number"
+                       required>
+
+                <input type="text"
+                       name="receiver"
+                       placeholder="Receiver Account Number"
+                       required>
+
+                <input type="number"
+                       name="amount"
+                       step="0.01"
+                       placeholder="Amount"
+                       required>
+
+                <button type="submit">
+                    Send Money
+                </button>
+
+            </form>
+
+            <div class="links">
+
+                <a href="/transactions">
+                    View Transactions
+                </a>
+
+                <a href="/logout">
+                    Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

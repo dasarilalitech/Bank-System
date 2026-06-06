@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Transactions</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f7fb;
+            padding:30px;
+        }
+
+        .box{
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th, td{
+            padding:15px;
+            border-bottom:1px solid #ddd;
+            text-align:center;
+        }
+
+        th{
+            background:#1e3a8a;
+            color:white;
+        }
+
+        a{
+            text-decoration:none;
+            color:#1e3a8a;
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Transaction History</h1>
+
+<table>
+
+<tr>
+
+    <th>ID</th>
+    <th>Sender</th>
+    <th>Receiver</th>
+    <th>Amount</th>
+    <th>Date</th>
+
+</tr>
+
+{% for t in transactions %}
+
+<tr>
+
+    <td>{{ t[0] }}</td>
+    <td>{{ t[1] }}</td>
+    <td>{{ t[2] }}</td>
+    <td>₹{{ t[3] }}</td>
+    <td>{{ t[4] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/dashboard">
+    Back to Dashboard
+</a>
+
+</div>
+
+</body>
+</html>
